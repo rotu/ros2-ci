@@ -9,8 +9,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - run: pip install --upgrade --user colcon-common-extensions vcstool
-      - run: python my_script.py
+      - run: python -m pip install --upgrade pip setuptools wheel
+      - run: pip install --upgrade colcon-common-extensions vcstool
       - shell: bash
         run: mkdir -p ros2/src
       - run: vcs import ros2/src --input https://github.com/ros2/ros2/raw/master/ros2.repos
