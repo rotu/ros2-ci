@@ -18,4 +18,4 @@ jobs:
       - run: vcs import ros2/src --input https://github.com/ros2/ros2/raw/master/ros2.repos
       # Runs a set of commands using the runners shell
       - run: colcon build --merge
-        working-directory: ros2/src
+        working-directory: ros2
