@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        colcon-cmake-pr92: [false, true]
+        colcon-cmake-branch: [refs/pull/92/merge, master]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -19,8 +19,7 @@ jobs:
         run: |
           from pathlib import Path
           Path('ros2/src').mkdir(parents=True, exist_ok=True)
-      - if: ${{ matrix.colcon-cmake-pr92 }}
-        run: pip install --upgrade --no-deps --force-reinstall git+https://github.com/colcon/colcon-cmake.git@refs/pull/92/merge
+      - run: pip install --upgrade --no-deps --force-reinstall git+https://github.com/colcon/colcon-cmake.git@${{matrix.colcon-cmake-branch}}
       - uses: microsoft/setup-msbuild@v1
       - run: vcs import ros2/src --input https://github.com/ros2/ros2/raw/master/ros2.repos
       - working-directory: ros2
