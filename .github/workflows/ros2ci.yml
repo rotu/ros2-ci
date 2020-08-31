@@ -15,7 +15,7 @@ jobs:
         run: |
           from pathlib import Path
           Path('ros2/src').mkdir(parents=True, exist_ok=True)
-      - uses: actions/setup-msbuild@v1
+      - uses: actions/setup-msbuild@v1.0.1
       - working-directory: ros2
         run: |
           vcs import src --input https://github.com/ros2/ros2/raw/master/ros2.repos
