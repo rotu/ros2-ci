@@ -3,6 +3,10 @@ on: push
 jobs:
   build:
     runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        colcon-cmake-pr92: [false, true]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -15,6 +19,8 @@ jobs:
         run: |
           from pathlib import Path
           Path('ros2/src').mkdir(parents=True, exist_ok=True)
+      - if: ${{ matrix.colcon-cmake-pr92 }}
+        run: pip install git+https://github.com/colcon/colcon-cmake.git@refs/pull/92/merge
       - uses: microsoft/setup-msbuild@v1
       - working-directory: ros2
         run: |
