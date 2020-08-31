@@ -20,7 +20,7 @@ jobs:
           from pathlib import Path
           Path('ros2/src').mkdir(parents=True, exist_ok=True)
       - if: ${{ matrix.colcon-cmake-pr92 }}
-        run: pip install git+https://github.com/colcon/colcon-cmake.git@refs/pull/92/merge
+        run: pip install --upgrade --no-deps --force-reinstall git+https://github.com/colcon/colcon-cmake.git@refs/pull/92/merge
       - uses: microsoft/setup-msbuild@v1
       - working-directory: ros2
         run: |
