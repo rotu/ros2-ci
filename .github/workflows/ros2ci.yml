@@ -22,8 +22,7 @@ jobs:
       - if: ${{ matrix.colcon-cmake-pr92 }}
         run: pip install --upgrade --no-deps --force-reinstall git+https://github.com/colcon/colcon-cmake.git@refs/pull/92/merge
       - uses: microsoft/setup-msbuild@v1
+      - run: vcs import ros2/src --input https://github.com/ros2/ros2/raw/master/ros2.repos
       - working-directory: ros2
-        run: |
-          vcs import src --input https://github.com/ros2/ros2/raw/master/ros2.repos
-          colcon build --merge
+        run: colcon build --merge --packages-up-to ament_cmake_core
         
