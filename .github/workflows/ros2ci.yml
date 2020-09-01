@@ -2,16 +2,16 @@ name: ROS2 CI
 on: push
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{matrix.runs-on}}
     strategy:
       fail-fast: false
       matrix:
+        runs-on: [ubuntu-18.04, ubuntu-20.04, windows-latest, macos-latest]
         vcs-repo-file-url:
           - "https://github.com/ros2/ros2/raw/master/ros2.repos"
           - |
             https://github.com/ros2/ros2/raw/master/ros2.repos
             ./local/repos
-        use-local-repos: [false, true]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,8 +25,9 @@ jobs:
         with:
           vcs-repo-file-url: ${{matrix.vcs-repo-file-url}}
           package-name: rmw_cyclonedds_cpp
+          target-ros2-distro: rolling
       - if: ${{ failure() }}
-        run: find
+        run: find .
       - if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
