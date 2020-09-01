@@ -23,3 +23,11 @@ jobs:
         with:
           vcs-repo-file-url: ${{matrix.vcs-repo-file-url}}
           package-name: rmw_cyclonedds_cpp
+      - if: ${{ failure() }}
+        run: find
+      - if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: |
+            ros_ws/log/*
