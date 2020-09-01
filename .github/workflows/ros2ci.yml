@@ -7,8 +7,10 @@ jobs:
       fail-fast: false
       matrix:
         vcs-repo-file-url:
-          - [https://github.com/ros2/ros2/raw/master/ros2.repos]
-          - [https://github.com/ros2/ros2/raw/master/ros2.repos, ./local/repos]
+          - "https://github.com/ros2/ros2/raw/master/ros2.repos"
+          - |
+            https://github.com/ros2/ros2/raw/master/ros2.repos
+            ./local/repos
         use-local-repos: [false, true]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
