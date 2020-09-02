@@ -11,10 +11,11 @@ jobs:
           - "https://github.com/ros2/ros2/raw/master/ros2.repos"
           - |
             https://github.com/ros2/ros2/raw/master/ros2.repos
-            ./local/repos
+            ./local.repos
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: actions/checkout@v2
       - run: |
             git config --global --add remote.origin.fetch "+refs/pull/*:refs/remotes/origin/pull/*"
       - uses: ros-tooling/setup-ros@master
