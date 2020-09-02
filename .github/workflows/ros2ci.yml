@@ -22,7 +22,7 @@ jobs:
       - uses: ros-tooling/action-ros-ci@master
         with:
           vcs-repo-file-url: |
-            "https://github.com/ros2/ros2/raw/master/ros2.repos" 
+            https://github.com/ros2/ros2/raw/master/ros2.repos
             ${{env.additional_repo_url}}
           package-name: rmw_cyclonedds_cpp
           target-ros2-distro: rolling
