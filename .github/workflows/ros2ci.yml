@@ -18,7 +18,7 @@ jobs:
       # - run: python -m pip install --upgrade pip setuptools wheel
       # - run: pip install --upgrade colcon-common-extensions vcstool
       - if: ${{matrix.use_local_repos}}
-        run: echo "::set-env name=additional_repo_url::${{github.workspace}}/local.repos"
+        run: echo "::set-env name=additional_repo_url::file://localhost/${{github.workspace}}/local.repos"
       - uses: ros-tooling/action-ros-ci@master
         with:
           vcs-repo-file-url: |
