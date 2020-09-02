@@ -27,10 +27,9 @@ jobs:
           package-name: rmw_cyclonedds_cpp
           target-ros2-distro: rolling
       - if: ${{ failure() }}
-        run: find .
-      - if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
           path: |
-            ros_ws/log/*
+            ros_ws/log/
+            ros_ws/build/
