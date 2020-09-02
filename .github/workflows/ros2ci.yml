@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
             git config --global --add remote.origin.fetch "+refs/pull/*:refs/remotes/origin/pull/*/merge"
-      - uses: ros-tooling/setup-ros@master
+      - uses: ros-tooling/setup-ros@pull/328/merge
       # - run: python -m pip install --upgrade pip setuptools wheel
       # - run: pip install --upgrade colcon-common-extensions vcstool
       - uses: ros-tooling/action-ros-ci@master
