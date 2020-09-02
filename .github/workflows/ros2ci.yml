@@ -16,11 +16,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - run: |
-            git config --global --unset-all remote.origin.fetch
             git config --global --add remote.origin.fetch "+refs/pull/*:refs/remotes/origin/pull/*"
       - uses: ros-tooling/setup-ros@master
-      - run: python -m pip install --upgrade pip setuptools wheel
-      - run: pip install --upgrade colcon-common-extensions vcstool
+      # - run: python -m pip install --upgrade pip setuptools wheel
+      # - run: pip install --upgrade colcon-common-extensions vcstool
       - uses: ros-tooling/action-ros-ci@master
         with:
           vcs-repo-file-url: ${{matrix.vcs-repo-file-url}}
